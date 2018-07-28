@@ -1,19 +1,17 @@
-def reverse(x):
-    """
-    :type x: int
-    :rtype: int
-    """
-    sign = (1, -1)[x < 0]
-    print sign
-    rst = sign * int(str(abs(x))[::-1])
-    return rst if -(2 ** 31) - 1 < rst < 2 ** 31 else 0
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
 
-a = reverse(123)
-print a
+        if nums == None or target == None:
+            return None
 
-a = [1, -1][90 < 0]
-print a
-
-b = cmp(90, 0)
-c = cmp(-85, 0)
-print b, c
+        buff_dict = {}
+        for i in range(len(nums)):
+            if nums[i] in buff_dict:
+                return [buff_dict[nums[i]], i]
+            else:
+                buff_dict[target - nums[i]] = i
